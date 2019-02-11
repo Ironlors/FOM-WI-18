@@ -9,6 +9,7 @@
 - unsigned Integer
 3. Aufgrund verschiedner Datenmodelle ist die Breite von Datentypen implementierungsabhängig.Waskönnen Sie tun, wenn Sie einen Ganzzahltypen mit fester Breite benötigen?
 definiert seit C99 in `<stdint.h>`
+
 type | size  | type
 ---|---|---
 int8_t | 8 bit | signed int
