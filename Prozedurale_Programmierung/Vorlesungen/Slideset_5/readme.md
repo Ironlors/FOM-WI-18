@@ -1,4 +1,4 @@
-## Slideset 4
+## Slideset 5
 #### Kontrollfragen (183)
 1. Schreiben Sie eine Funktion, die zwei int-Arrays auf Gleichheit überprüft. Die Funktion soll `-1` zurückgeben, wenn beide Arrays gleich sind, oder die Position, an der ein Unterschied gefunden wurde. `-2` soll zurückgegeben werden, wenn beide Arrays unterschiedlich lang sind.
 2. Im folgenden Listing wurden gleich zwei Fehler gemacht. Welche?
