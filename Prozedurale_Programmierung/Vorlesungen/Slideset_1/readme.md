@@ -7,7 +7,7 @@
 - Long Long
 2. Womit können Sie eine Integervariable ohne Vorzeichen vereinbaren?
 - unsigned Integer
-3. Aufgrund verschiedner Datenmodelle ist die Breite von Datentypen implementierungsabhängig.Waskönnen Sie tun, wenn Sie einen Ganzzahltypen mit fester Breite benötigen?
+3. Aufgrund verschiedner Datenmodelle ist die Breite von Datentypen implementierungsabhängig. Was können Sie tun, wenn Sie einen Ganzzahltypen mit fester Breite benötigen?
 definiert seit C99 in `<stdint.h>`
 
 type | size  | type
