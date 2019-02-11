@@ -7,7 +7,7 @@
 - Long Long
 2. Womit können Sie eine Integervariable ohne Vorzeichen vereinbaren?
 - unsigned Integer
-3. Aufgrund verschiedner Datenmodelle ist die Breite von Datentypen implementierungsabhängig.Waskönnen Sie tun, wenn Sie einen Ganzzahltypen mit fester Breite benötigen?
+3. Aufgrund verschiedner Datenmodelle ist die Breite von Datentypen implementierungsabhängig. Was können Sie tun, wenn Sie einen Ganzzahltypen mit fester Breite benötigen?
 definiert seit C99 in `<stdint.h>`
 
 type | size  | type
@@ -20,7 +20,7 @@ uint8_t | 8 bit | unsigned int
 uint16_t | 16 bit | unsigned int
 uint32_t | 32 bit | unsigned int
 uint64_t | 64 bit | unsigned int
-4. Nennen Sie den grundlegenden Datentypen,für Zeichen verwendet wird.
+4. Nennen Sie den grundlegenden Datentypen der für Zeichen verwendet wird.
  - char
 5. Ermitteln Sie die Größe in Byte der Datentypen int und long long auf Ihrem System.
 
@@ -54,4 +54,5 @@ int main(void){
 }
 ```
 7. Was bewirkt das Schlüsselwort `const` vor einem Datentyp?
+
 Das Schlüsselwort `const` macht aus der Variablen eine Konstante. Diese kann während der Laufzeit nicht geändert werden.

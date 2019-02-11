@@ -1,6 +1,6 @@
 ## Slideset 3
 #### Kontrollfragen (Slide 118)
-1. Welchen Wert gibt eine bedingte if-Anweisung zwischen den Klammern () zurück, wenn der Ausdruck der Bedingung richtig oder falsch ist?
+1. Welchen Wert gibt eine bedingte if-Anweisung zwischen den Klammern () zurück, wenn der Ausdruck der Bedingung richtig oder falsch ist?<br>
 Man erwartet, dass der Inhalt der Klammern einen boolean mit `true` oder `false` ausgibt. Da C aber leider keinen boolean hat so wird ein Integer mit den werten `1` oder `0` ausgegeben.
 Dies kann mit folgenden Codezeilen getestet werden.
 ```c
@@ -32,7 +32,7 @@ if(x==0){
 } else if(x==2){
   printf("x==2");
 } else {
-  pritnf("x is not 0, 1 or 2");
+  printf("x is not 0, 1 or 2");
 }
 ```
 
@@ -114,10 +114,6 @@ In diesem Fall bietet sich die `do-while`-loop an, da hier der Code min. 1 mal a
 
 4. Was gibt diese Schleife aus und welcher Fehler wurde hier gemacht?
 
-| original | abgeändert |
-| ---- | ---- |
-|<code>int ival = 0;<br>while( ival > 10){<br>printf("%d\n", ival);<br>ival++;<br>}</code>|<code>int ival = 0;<br>while( ival < 10){<br>printf("%d\n", ival);<br>ival++;<br>}</code>|
-
 Das Problem ist, dass der eigetliche Code nur ausgeführt wird, wenn `ìval > 10`. Da ival aber als 0 initialisiert wurde, wird der Code innerhalb der Schleife nie ausgeführt.
 
 5. Im folgendem Beispiel wird nur einmal 0 ausgegeben und dann hängt das Programm in einer Endlosschleife fest. Was wurde falsch gemacht?
@@ -162,7 +158,7 @@ int square(int i){
 Bei dem Begriff `call-by-value` wird nicht die Variable an sich übergeben, sondern nur der Wert der Variable. Würden wir z.B. die zu übergebende Variable ändern, so würden wir nur die lokale Kopie verändern, aber nicht die ursprüngliche Variable.
 Im Gegensatz dazu wird beim `call-by-reference` nur der Speicherpunkt der Variable übergeben. Daher hat eine Änderung der Variable einen Effekt auf alle Instanzen, die auf die Variable zugreifen.
 
-3. Was müssen Sie bei der Verwendung eines Rückgabewertes beachten und mit welcher Anweisung können Sie einen Wert aus einer FUnktion zurückgeben?
+3. Was müssen Sie bei der Verwendung eines Rückgabewertes beachten und mit welcher Anweisung können Sie einen Wert aus einer Funktion zurückgeben?
 
 Bei der Rückgabe von Werten muss beachtet werden, dass man den gleichen Datentyp zurückgibt, der auch auf der anderen Seite erwartet wird. Der Befehl für die Rückgabe ist `return x;`
 
@@ -249,7 +245,7 @@ int main(void){
 }
 ```
 
-9. Schreiben Sie das Programm bzw. die Funktion fakulty(), in der Sie mit einer Rekursion die Fakultät von n berechnet haben um, damit die Fakultät ohne Rekursion berechnet wird.
+9. Schreiben Sie das Programm bzw. die Funktion faculty(), in der Sie mit einer Rekursion die Fakultät von n berechnet haben um, damit die Fakultät ohne Rekursion berechnet wird.
 
 **recursive_faculty.c**
 ```c

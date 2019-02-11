@@ -8,6 +8,7 @@
 | calloc | sichert Speicherplatz. Überschreibt alte Werte mit 0 |
 
 2. Im folgenden Codeausschnitt wurde ein übler Fehler gemacht. Welcher?
+
 ```c
 int *array1=NULL, *iarray2=NULL;
 iarray1 = malloc( BLK * sizeof(int)); // (int *)malloc, since void pointer has the be casted to int pointer

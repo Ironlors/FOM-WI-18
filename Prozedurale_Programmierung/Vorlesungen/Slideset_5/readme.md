@@ -57,16 +57,15 @@ int main(void){
   return EXIT_SUCCESS;
 }
 ```
-Bis auf ein Paar Schöhnheitsoptimierungen erkenne ich bisher keinen Fehler.
 
-"verbesserter Code"
+verbesserter Code
 **vocals.c**
 ```c
 #include <stdio.h>
 #include <stdlib.h>
 
 int main(void){
-  char v[5] = {'A','E','I','O','U'};
+  char v[6] = {'A','E','I','O','U','\0'};
   int size_of_array = sizeof(v)/sizeof(v[0]);
   
   printf("Die einzelnen Vokale: \n");

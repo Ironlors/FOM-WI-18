@@ -4,6 +4,7 @@
 
 Ein Zeiger beschreibt nich direkt die Varialbe sondern direkt den Speicherplatz, auf welchen diese vermerkt ist. Der Unterschied ist ähnlich zum Unterschied zwischen `call by value` und `call by reference`.
 Mann erkennt Zeiger am `*`.
+
 2. Welcher Wert wird mit den beiden printf-Anweisungen in den Zeilen (06) und (07) ausgegeben?
 ```c
 int *ptr = NULL;
