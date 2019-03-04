@@ -13,6 +13,8 @@ public class Seite_1 {
         task_2(); // Aufrufen der 2. Aufgabe
         System.out.println("**********Task 4**********");
         task_4();
+        System.out.println("**********Task 5**********");
+        task_5();
     }
     /*
      Schreiben Sie eine prozedurale Java-Applikation, die dem Benutzer erlaubt drei Zahlen einzugeben. Aus
@@ -75,5 +77,51 @@ public class Seite_1 {
             System.out.println("Verloren");
         }
 
+    }
+
+    private static void task_5(){
+        // Initialisierung der Variablen
+        int selection;
+        int wasser = 0 , cola = 0, tee = 0, eistee = 0, apfelsaft = 0, selter = 0, milch = 0;
+        boolean cancel = false;
+
+        Scanner sc = new Scanner(System.in); // startet den Scanner
+
+        while(!cancel){ // wiederholt, falls die Abbruchbedingung nicht erfüllt ist
+            // Gibt das "Menü" aus
+            System.out.println("1) Wasser");
+            System.out.println("2) Cola");
+            System.out.println("3) Tee");
+            System.out.println("4) Eistee");
+            System.out.println("5) Apfelsaft");
+            System.out.println("6) Selter");
+            System.out.println("7) Milch");
+            System.out.println("default: beenden");
+
+            selection = Integer.parseInt(sc.nextLine()); // holt input und wandelt in Integer um
+
+            // erhöht den count je nach Auswahl
+            switch (selection){
+                case 1: wasser += 1; break;
+                case 2: cola += 1; break;
+                case 3: tee += 1; break;
+                case 4: eistee += 1; break;
+                case 5: apfelsaft += 1; break;
+                case 6: selter += 1; break;
+                case 7: milch += 1; break;
+                default: cancel = true; break; // setzt Abbruchbedingung auf wahr, um die Schleife  zu beenden
+            }
+        }
+        sc.close(); // beendet den Scanner
+
+        // gibt die Finale Abrechnung aus
+        System.out.println("Abrechnung");
+        System.out.println("Wasser: "+ wasser);
+        System.out.println("Cola: "+ cola);
+        System.out.println("Tee: "+ tee);
+        System.out.println("Eistee: "+ eistee);
+        System.out.println("Apfelsaft: "+ apfelsaft);
+        System.out.println("Selter: "+ selter);
+        System.out.println("Milch: "+ milch);
     }
 }

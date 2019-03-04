@@ -79,3 +79,59 @@ private static void task_4() {
 
 }
 ```
+
+**Aufgabe 5**
+Sie planen eine große Feier.
+- Die Gäste dürfen zwischen 7 verschiedenen Getränken wählen. Sie dürfen soviel trinken, wie sie wollen. Sie wollen allerdings am Ende des Abends wissen, wie viele Getränke an die Gäste ausgeteilt wurden.
+- Schreiben Sie ein Programm, das ein Menü von 7 Getränken (Text auf dem Bildschirm) immer wiederholt und den Gästen eine Eingabe erlaubt.
+- Wird ein Getränk gewählt, wird dieses gezählt (switch).
+- Zusätzlich zu den einzelnen Mengen, soll am Ende auch die Gesamtmenge an Getränken berechnet werden.
+-  Verwenden Sie für ihr Programm eine vorprüfende Schleife(am günstigsten while)!
+
+```Java
+private static void task_5(){
+        // Initialisierung der Variablen
+        int selection;
+        int wasser = 0 , cola = 0, tee = 0, eistee = 0, apfelsaft = 0, selter = 0, milch = 0;
+        boolean cancel = false;
+
+        Scanner sc = new Scanner(System.in); // startet den Scanner
+
+        while(!cancel){ // wiederholt, falls die Abbruchbedingung nicht erfüllt ist
+            // Gibt das "Menü" aus
+            System.out.println("1) Wasser");
+            System.out.println("2) Cola");
+            System.out.println("3) Tee");
+            System.out.println("4) Eistee");
+            System.out.println("5) Apfelsaft");
+            System.out.println("6) Selter");
+            System.out.println("7) Milch");
+            System.out.println("default: beenden");
+
+            selection = Integer.parseInt(sc.nextLine()); // holt input und wandelt in Integer um
+
+            // erhöht den count je nach Auswahl
+            switch (selection){
+                case 1: wasser += 1; break;
+                case 2: cola += 1; break;
+                case 3: tee += 1; break;
+                case 4: eistee += 1; break;
+                case 5: apfelsaft += 1; break;
+                case 6: selter += 1; break;
+                case 7: milch += 1; break;
+                default: cancel = true; break; // setzt Abbruchbedingung auf wahr, um die Schleife  zu beenden
+            }
+        }
+        sc.close(); // beendet den Scanner
+
+        // gibt die Finale Abrechnung aus
+        System.out.println("Abrechnung");
+        System.out.println("Wasser: "+ wasser);
+        System.out.println("Cola: "+ cola);
+        System.out.println("Tee: "+ tee);
+        System.out.println("Eistee: "+ eistee);
+        System.out.println("Apfelsaft: "+ apfelsaft);
+        System.out.println("Selter: "+ selter);
+        System.out.println("Milch: "+ milch);
+    }
+```
