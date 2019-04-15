@@ -433,3 +433,155 @@ Dies ist keine Realisierung einer Standardverteilung, sondern einer T-Verteilung
 * $H_0: \theta = \theta_0\ gegen\ H_1: \theta\ne\theta_0$, dann |t| > $t_{n-1,1-\frac{\alpha}{2}}$
 * $H_0: \theta \leq \theta_0\ gegen\ H_1: \theta>\theta_0$, dann |t| > $t_{n-1,1-\alpha}$
 * $H_0: \theta \geq \theta_0\ gegen\ H_1: \theta<\theta_0$, dann |t| > $-t_{n-1,1-\alpha}$
+
+
+### Hier habe ich leider was verpasst. Das muss noch von anderen eingefügt werden (Lesung vom 15.04.2019)
+
+#### Aufgabenblatt 4 Nr. 4
+```python
+target = 50
+data = [49,46.5,50.2,47,45.5,48,48.3,47.5,48.7,48.5,46.6,52,47.4,48.3,45.5,46,51.7,51.2,49.9,48.7]
+
+stats,p_value = scipy.stats.normaltest(data)
+prit("stats: "+str(stats)) #stats: 0.8959059083213032
+print("p_value: "+str(p_value)) #p_value: 0.6389347425460986
+```
+Da $H_0$ nicht abgelehnt werden kann (p>0,05) kann man die $H_0$ annehmen.
+$\Rightarrow$ Die Daten sind normalverteilt
+##### Test ob Pflanzen den optimalen Wassergehalt aufweisen
+$\mu$ = erwarteter Wassergehalt der Pflanzen<br>
+$\mu_0$ = 50g pro KG<br>
+Testproblem:
+$H_0: \theta = \theta_0\ gegen\ H_1: \theta\ne\theta_0$
+```python
+stats,p_value = scipy.stats.ttest_1samp(data,target)
+print("stats: "+str(stats)) #stats: -3.875119337325857
+print("p_value: "+str(p_value)) #p_value: 0.0010191046911934428
+```
+Da `p = 0.0010191046911934428` kleiner as $\alpha$ ist, so wird $H_0$ abgelehnt. Somit konnte statistisch gesichert werden, dass Pflanzen nicht den optimalen Wassergehalt aufweisen.
+
+### Testen von Wahrscheinlichkeiten
+Sei A das interessierende Ereigniss und p die Wahrscheinlichkeit, dass A eintrifft, d.h. $p = p\left(A\right)$.
+
+Daten: ${x}_{1}=\left \{\frac{1,\ falls\ A\ eintrifft}{0,\ sonst}\right .$ enstammen aus einer Binominalverteilten Grundgesamtheit.
+
+Prüfgröße: $t=\sum\limits_{i=0}^{n}{{x}_{i}}$
+Krit. Wert: Quantile der Binominalverteilung
+
+```python
+p = scipy.stats.binom_test(18, n=40, p=0.35, alternative='greater')
+print(p) #0.12385218601628106
+```
+Da $p>0.05$ wird $H_0$ angenommen.
+Daher ist statistische bewiesen, dass die Kampagne nichts gebracht haben.
+
+# Kapitel 5 Zusammenhangsanalyse
+**Ziel:** Die Untersuchung ob zwischen 2 Größen ein Zusammenhang besteht.
+
+Je nach Datentyp gibt es verschiedene Verfahren:
+- Kategorische (nominale) Daten --> Kontigenzanalyse
+- metrische Daten --> Korrelationsanalyse
+
+## 5.1 Kontigenzanalyse
+Die gemeinse Verteilung der kategorischen Merkmale wird in einer Kreuztabelle dargestellt.
+
+Beispiel: Wahl des Verkehrsmittel und Geschlecht
+- | ÖPNV  | Auto  | Fahrrad | Randhäufigkeit
+        --|---|---|--- | --
+Weiblich  | 40  | 20  | 15 | 75
+Männlich  | 10  | 30  |  5 | 45
+Randhäufigkeit| 50 | 50 | 20 | 120
+
+Allgemein:
+-  | $x_1$  | ...  | $x_k$  | -
+--|---|---|--- | --
+$y_1$  | $n_{11}$   | ...  | $n_{1k}$ | $n_{1.}$
+...    | ...  | ...  | ... | ...
+$y_m$  |$n_{m1}$   | ...  | $n_{mk}$ | $n_{m.}$
+|  - | $n_{.1}$   | ...  | $n_{.k}$  | n
+
+##### Berechnung der erwarteteten Häufigkeit:
+Unter der Vorraussetzung der Unabhängigkeit gilt:
+$$e_{ij}=\frac{n_{i.}\cdot n_{.j}}{n}$$
+
+**Beispiel:**
+- | ÖPNV  | Auto  | Fahrrad | Randhäufigkeit
+        --|---|---|--- | --
+Weiblich  | $31.25=\frac{50\cdot 75}{120}$ | $31.25=\frac{50\cdot 75}{120}$  | $12.5=\frac{20\cdot 75}{120}$  | 75
+Männlich  | $18.75=\frac{50\cdot 45}{120}$ | $18.75=\frac{50\cdot 45}{120}$  | $7.5=\frac{20\cdot 45}{120}$ | 45
+Randhäufigkeit| 50 | 50 | 20 | 120
+
+Nun kann der erwartete Wert mit dem beobachteten Wert verglichen werden. Je höher die Differenz der beiden ist desto höher der Zusammenhang zwischen den beiden Eigenschaften und damit deren Abhängigkeit.
+
+Ein Maß für diese Abweichung ist der ***Chi-Quadrat Koeffizient***.
+$$\chi^{2}=\sum\limits_{i=1}^{k}{\sum\limits_{j=1}^{m}{\frac{\left ({n}_{ij}-{e}_{ij}
+\right )^{2}}{{e}_{ij}}}}$$
+$$=\sum{\tfrac{\left(beobachteter\ -\ erw.\ HK\right)^{2}}{erw.\ HK}}$$
+
+Problematisch ist, dass dieser Wert nach oben offen ist. Daher muss $\chi^{2}$ noch normiert werden.
+Daher gibt es den Kontigenzkoeffizienten $c$, welcher normiert ist.
+$$c=\sqrt{\frac{\chi^{2}}{\chi^{2}+n}}$$
+modifizierter Kontigenzkoeffizienten: $c^{*}=\sqrt{\frac{m^{*}}{m^{*}-1}}\cdot c$
+Wobei $m^{*}=min\left(m,k\right)$
+* m = Anzahl der Zeilen
+* k = Anzahl der Spalten
+
+**Beispiel:**
+$$c=\sqrt{\frac{18.67}{18.67+120}}=0.367$$
+$$m^{2}=2$$
+$$c^{*}=\sqrt{\frac{2}{2-1}}\cdot 0.367 \approx 0.519 \Rightarrow\ mäßiger\ Zusammenhang$$
+Für $c^{*}$ gelten folgende Richtlinien:
+* $c^{*} < 0.3 \rightarrow$ kein Zusammenhang
+* $0.3 \leq c^{2} \leq 0.6 \rightarrow$ mäßiger Zusammenhang
+* $c^{*} > 0.6 \rightarrow$ starker Zusammenhang
+
+##### Chi-Quadrat Unabhängigkeitstest
+X ist eine Zufallsvariable, welche die Werte $x_1^{*}$ bis $x_k^{*}$ annimmt.
+Y ist eine Zufallsvariable, welche die Werte $y_1^{*}$ bis $y_m^{*}$ annimmt.
+
+$H_0 :$ X und Y sind unabhängig vs. $H_1 :$ X und Y sind abhängig
+
+* Prüfgröße: $t=\chi^{2}$
+* kritischer Wert: $\chi_{(m-1)\cdot(k-1),1-\alpha}^{2}$
+* $H_0$ wird abgelehnt, falls $t > \chi_{(m-1)\cdot(k-1),1-\alpha}^{2}$ oder $p<\alpha$
+
+**Beispiel:**
+
+X ist eine ZV, welche das Geschlecht bezeichnet wobei:
+* $x_1^{*}\ =\ männlich$
+* $x_2^{*}\ =\ weiblich$
+
+Y ist eine ZV, welche das bevorzugte Verkehrmittel beschreibt wobei:
+* $y_1^{*}\ =\ ÖPNV$
+* $y_1^{*}\ =\ Auto$
+* $y_1^{*}\ =\ Fahrrad$
+
+$\Rightarrow\ k=2,\ m=3$
+
+Prüfgröße: $t=18.67$
+
+Krit. Wert: $\alpha = 0,05\ ,\ m=3\ ,\ k=2$
+
+$$\chi_{(3-1)\cdot(2-1),1-0.95}^{2}=\chi_{2,1-0.95}^{2}$$
+$$=5,991$$
+Daher konnte statistisch gesichert werden, dass es einen Zusammenhang zwischen Geschlecht und Wahl des Verkehrsmittels beteht.
+
+## 5.2 Korrelationsanalyse
+Untersucht ob es einen linearen Zusammenhang zwischen 2 metrischen Größen (quantitative Daten) ein linearer Zusammenhang besteht.
+
+Unter der **Kovarianz** von 2 metrischen Merkmalen X und Y versteht man.
+
+$$s_{xy}=\frac{1}{n}\cdot\sum\limits_{i=1}^{n}{\left ({x}_{i}-\overline{x}
+\right )\cdot\left ({y}_{i}-\overline{y}
+\right )}$$
+Dieser Wert gibt die Stärke des linearen Zusammenhangs an. Er ist allerdings schwer zu interpretieren.
+
+Daher nutzt man den **Korrelationskoeffizienten**.
+Unter dem Korrelationskoeffizienten von 2 Merkmalen versteht man:
+$$
+{r}_{xy}=\frac{\sum\limits_{i=1}^{n}{\left ({x}_{i}-\overline{x}
+\right )}\cdot \left ({y}_{i}-\overline{y}
+\right )}{\sqrt{\sum\limits_{i=1}^{n}{{\left ({x}_{i}-\overline{x}
+\right )}^{2}}}\cdot \sqrt{\sum\limits_{i=1}^{n}{{\left ({y}_{i}-\overline{y}
+\right )}^{2}}}}
+$$
